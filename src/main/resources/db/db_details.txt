@@ -4,76 +4,81 @@
 
 restaurants
 -
-rest_id PK string
-name  string
-gst_no string
-primary_email string
+restaurant_id      PK  string
+restaurant_name        string
+gst_number             string
+primary_email          string
 primary_contact_number string
-address string
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+address                string
+created_at             date
+updated_at             date
+created_by             string
+updated_by             string
 
-price
+
+prices
 -
-price_id PK string
-rest_id string FK >- restaurants.rest_id
-portionSize string
-itemTable PK
-price long
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+price_id          PK  string
+restaurant_id         string  FK >- restaurants.restaurant_id
+portion_size          string
+item_id              string  FK >- items.item_id
+price                 decimal
+created_at            date
+updated_at            date
+created_by            string
+updated_by            string
+
 
 additional_Pricing
 -
-adp_id PK string
-service_type_Id string
-priceName string
-item_id  string FK >- items.item_id
-charge string
-chargeType string
-rest_id string FK >- restaurants.rest_id
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+additional_pricing_id PK  string
+service_type_id           string  FK >- service_types.service_type_id
+price_name                string
+item_id                   string  FK >- items.item_id
+charge                   decimal
+charge_type               string
+restaurant_id             string  FK >- restaurants.restaurant_id
+created_at                date
+updated_at                date
+created_by                string
+updated_by                string
+
 
 items
 -
-item_id PK string
-product_id string
-productName string
-productDesc string
-rest_id string FK >- restaurants.rest_id
-itemStatus string
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+item_id           PK  string
+product_id            string
+product_name          string
+product_description   string
+restaurant_id         string  FK >- restaurants.restaurant_id
+item_status           string
+created_at            date
+updated_at            date
+created_by            string
+updated_by            string
 
-service_type
+
+service_types
 -
-service_type_id PK string
-type_name string
-rest_id string FK >- restaurants.rest_id
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+service_type_id   PK  string
+type_name             string
+restaurant_id         string  FK >- restaurants.restaurant_id
+created_at            date
+updated_at            date
+created_by            string
+updated_by            string
+
 
 users
 -
-id PK string
-rest_id string FK >- restaurants.rest_id
-name string
-email string
-password string
-contact_number string
-role string
-createdAt Date
-updatedAt Date
-createdBy string
-updatedBy string
+user_id           PK  string
+restaurant_id         string  FK >- restaurants.restaurant_id
+user_name             string
+email                 string
+password              string
+contact_number        string
+role                  string
+created_at            date
+updated_at            date
+created_by            string
+updated_by            string

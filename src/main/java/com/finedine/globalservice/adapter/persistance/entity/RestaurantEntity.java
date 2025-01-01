@@ -11,20 +11,37 @@ import java.util.Base64;
 
 @Entity
 @Data
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 public class RestaurantEntity {
 
     @Id
+    @Column(name = "restaurant_id")
     private String restId;
+
+    @Column(name = "restaurant_name")
     private String name;
+
+    @Column(name = "gst_number")
     private String gstNo;
     @Lob
     private String address;
+
+    @Column(name = "primary_email")
     private String primaryEmailId;
+
+    @Column(name = "primary_contact_number")
     private String primaryContactNumber;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime modifiedAt;
+
+    @Column(name = "created_by")
     private String createdBy;
+
+    @Column(name = "updated_by")
     private String modifiedBy;
 
     @PrePersist
