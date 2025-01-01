@@ -1,0 +1,49 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier for the user
+        restaurant_id:
+          type: string
+          description: Identifier for the associated restaurant
+        user_name:
+          type: string
+          description: Name of the user
+        email:
+          type: string
+          format: email
+          description: Email address of the user
+        password:
+          type: string
+          format: password
+          description: Password for the user account
+        contact_number:
+          type: string
+          description: Contact phone number in international format
+          pattern: "^\\+?[0-9\\-\\s]{7,15}$"
+          example: "+1-123-456-7890"
+        role:
+          type: string
+          description: Role of the user (e.g., admin, customer)
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the user was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the user was last updated
+        created_by:
+          type: string
+          description: Identifier of the user who created this entry
+        updated_by:
+          type: string
+          description: Identifier of the user who last updated this entry
+      required:
+        - user_name
+        - email
+        - password
+        - role

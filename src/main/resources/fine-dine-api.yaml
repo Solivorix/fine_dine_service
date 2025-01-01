@@ -128,3 +128,22 @@ paths:
           description: Restaurant deleted successfully
         '404':
           description: Restaurant not found
+  /users:
+    post:
+      summary: Create a new user
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'user-models.yaml#/components/schemas/User'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'user-models.yaml#/components/schemas/User'
+        '400':
+          description: Invalid input
