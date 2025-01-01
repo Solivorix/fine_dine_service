@@ -1,0 +1,40 @@
+components:
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        rest_id:
+          type: string
+          description: Unique identifier for the restaurant
+        name:
+          type: string
+          description: Name of the restaurant
+        gst_no:
+          type: string
+          description: GST registration number
+        address:
+          type: string
+          format: json
+          description: JSON string containing address details
+        primaryEmailId:
+          type: string
+          description: Primary email Id of restaurant
+        primaryContactNumber:
+          type: string
+          description: Contact phone number in international format
+          pattern: "^\\+?[0-9\\-\\s]{7,15}$"
+          example: "+1-123-456-7890"
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the restaurant was created
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the restaurant was modified
+        createdBy:
+          type: string
+          description: User ID or username of the person who created the restaurant
+        modifiedBy:
+          type: string
+          description: User ID or username of the person who modified the restaurant

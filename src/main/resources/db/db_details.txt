@@ -1,0 +1,79 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+restaurants
+-
+rest_id PK string
+name  string
+gst_no string
+primary_email string
+primary_contact_number string
+address string
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string
+
+price
+-
+price_id PK string
+rest_id string FK >- restaurants.rest_id
+portionSize string
+itemTable PK
+price long
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string
+
+additional_Pricing
+-
+adp_id PK string
+service_type_Id string
+priceName string
+item_id  string FK >- items.item_id
+charge string
+chargeType string
+rest_id string FK >- restaurants.rest_id
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string
+
+items
+-
+item_id PK string
+product_id string
+productName string
+productDesc string
+rest_id string FK >- restaurants.rest_id
+itemStatus string
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string
+
+service_type
+-
+service_type_id PK string
+type_name string
+rest_id string FK >- restaurants.rest_id
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string
+
+users
+-
+id PK string
+rest_id string FK >- restaurants.rest_id
+name string
+email string
+password string
+contact_number string
+role string
+createdAt Date
+updatedAt Date
+createdBy string
+updatedBy string

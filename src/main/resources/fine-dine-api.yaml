@@ -1,0 +1,130 @@
+# src/main/resources/api-spec.yaml
+openapi: 3.0.3
+info:
+  title: Fine dine Management API
+  version: 1.0.0
+  description: API for fine dine management
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /restaurants:
+    get:
+      summary: Get all restaurants
+      operationId: getAllRestaurants
+      responses:
+        '200':
+          description: A list of restaurants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+    post:
+      summary: Create a new restaurant
+      operationId: createRestaurant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+      responses:
+        '201':
+          description: Restaurant created successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+        '400':
+          description: Invalid input
+  /restaurants/{id}:
+    get:
+      summary: Get a restaurant by its unique id
+      operationId: getRestaurantById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Restaurant ID
+      responses:
+        '200':
+          description: A restaurant object
+          content:
+            application/json:
+              schema:
+                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+        '404':
+          description: Restaurant not found
+    put:
+      summary: Update a restaurant by its unique id
+      operationId: updateRestaurant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Restaurant ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+      responses:
+        '200':
+          description: Restaurant updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+        '404':
+          description: Restaurant not found
+        '400':
+          description: Invalid input
+    patch:
+      summary: Partially update a restaurant by its unique id
+      operationId: patchRestaurant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Restaurant ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+      responses:
+        '200':
+          description: Restaurant partially updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+        '404':
+          description: Restaurant not found
+        '400':
+          description: Invalid input
+    delete:
+      summary: Delete a restaurant by its unique id
+      operationId: deleteRestaurant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Restaurant ID
+      responses:
+        '204':
+          description: Restaurant deleted successfully
+        '404':
+          description: Restaurant not found

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: fine_dine_global_service
+  datasource:
+    url: jdbc:mysql://localhost:3306/fine_dine_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
