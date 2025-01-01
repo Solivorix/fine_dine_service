@@ -1,5 +1,6 @@
 package com.finedine.globalservice.adapter.persistance.entity;
 
+import com.finedine.globalservice.adapter.util.UniqueHashGenerator;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -53,16 +54,11 @@ public class RestaurantEntity {
     @PreUpdate
     public void preUpdate() {
         this.modifiedAt = LocalDateTime.now();
+        this.restId = generateHashId();
     }
 
     private String generateHashId() {
-        try {
-            String dataToHash = name + gstNo + createdAt.toString(); // Combine key attributes
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = digest.digest(dataToHash.getBytes(StandardCharsets.UTF_8));
-            return Base64.getUrlEncoder().withoutPadding().encodeToString(hashBytes); // Encode to Base64 URL-safe format
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error generating hash ID", e);
-        }
+        String dataToHash = name + gstNo + createdAt.toString(); // Combine key attributes
+        return UniqueHashGenerator.generateHash(dataToHash);
     }
 }
