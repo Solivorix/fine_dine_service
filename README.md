@@ -110,4 +110,4 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 ## Contact
 For inquiries or collaboration, please contact:
 - **Akhil**  
-  [Email or other contact information]
+  [akhiloutlook@gmail.com]
