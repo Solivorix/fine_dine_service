@@ -39,8 +39,7 @@ The **Fine Dine** project is a high-end, elegant dining solution designed to pro
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/fine-dine.git
-    cd fine-dine
+    git clone https://github.com/Solivorix/fine_dine_service.git
     ```
 
 2. Setup the database:
