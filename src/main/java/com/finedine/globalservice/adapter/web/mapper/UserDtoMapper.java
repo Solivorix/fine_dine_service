@@ -23,6 +23,7 @@ public interface UserDtoMapper {
 
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "localToOffset")
     @Mapping(source = "updatedAt", target = "updatedAt", qualifiedByName = "localToOffset")
+    @Mapping(target = "password", ignore = true)
     UserDto toUserDto(UserModel userModel);
 
     List<UserModel> toUserModelList(List<UserDto> userDtoList);

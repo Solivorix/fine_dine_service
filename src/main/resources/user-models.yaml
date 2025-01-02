@@ -18,6 +18,7 @@ components:
           description: Email address of the user
         password:
           type: string
+          writeOnly: true
           format: password
           description: Password for the user account
         contact_number:

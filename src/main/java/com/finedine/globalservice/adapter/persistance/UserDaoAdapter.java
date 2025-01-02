@@ -1,6 +1,6 @@
 package com.finedine.globalservice.adapter.persistance;
 
-import com.finedine.globalservice.adapter.persistance.mapper.RestaurantEntityMapper;
+import com.finedine.globalservice.adapter.persistance.entity.UserEntity;
 import com.finedine.globalservice.adapter.persistance.mapper.UserEntityMapper;
 import com.finedine.globalservice.adapter.persistance.repository.UserRepository;
 import com.finedine.globalservice.hexagon.application.port.spi.UserDao;
@@ -25,5 +25,12 @@ public class UserDaoAdapter implements UserDao {
                 .map(userRepository::save)
                 .map(UserEntityMapper.INSTANCE::toUserModel)
                 .orElseThrow(() -> new IllegalArgumentException("UserModel cannot be null"));
+    }
+
+    @Override
+    public UserModel findByUserName(String username) {
+        return userRepository.findByUserName(username)
+                .map(UserEntityMapper.INSTANCE::toUserModel)
+                .orElse(null);
     }
 }

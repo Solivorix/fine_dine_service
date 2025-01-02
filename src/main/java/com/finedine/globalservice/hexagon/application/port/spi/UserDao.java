@@ -4,4 +4,6 @@ import com.finedine.globalservice.hexagon.domain.model.UserModel;
 
 public interface UserDao {
     UserModel createUser(UserModel userModel);
+
+    UserModel findByUserName(String username);
 }

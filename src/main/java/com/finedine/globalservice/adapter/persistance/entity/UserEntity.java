@@ -44,6 +44,9 @@ public class UserEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Column(name = "user_password_salt")
+    private String passwordSalt;
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();

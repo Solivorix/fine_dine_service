@@ -13,6 +13,7 @@ public class UserModel {
     private String userName;
     private String email;
     private String password;
+    private String passwordSalt;
     private String contactNumber;
     private String role;
     private String createdBy;
