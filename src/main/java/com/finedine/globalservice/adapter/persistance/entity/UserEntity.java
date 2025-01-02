@@ -36,7 +36,7 @@ public class UserEntity {
     private String createdBy;
 
     @Column(name = "updated_by")
-    private String modifiedBy;
+    private String updatedBy;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

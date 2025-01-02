@@ -129,6 +129,18 @@ paths:
         '404':
           description: Restaurant not found
   /users:
+    get:
+      summary: Get all users
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'user-models.yaml#/components/schemas/User'
     post:
       summary: Create a new user
       operationId: createUser
@@ -145,5 +157,97 @@ paths:
             application/json:
               schema:
                 $ref: 'user-models.yaml#/components/schemas/User'
+        '400':
+          description: Invalid input
+  /users/{id}:
+    get:
+      summary: Get a user by their unique ID
+      operationId: getUserById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID
+      responses:
+        '200':
+          description: A user object
+          content:
+            application/json:
+              schema:
+                $ref: 'user-models.yaml#/components/schemas/User'
+        '404':
+          description: User not found
+
+    put:
+      summary: Update a user by their unique ID
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'user-models.yaml#/components/schemas/User'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'user-models.yaml#/components/schemas/User'
+        '404':
+          description: User not found
+        '400':
+          description: Invalid input
+
+    delete:
+      summary: Delete a user by their unique ID
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+
+    patch:
+      summary: Partially update a user by their unique ID
+      operationId: patchUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'user-models.yaml#/components/schemas/User'
+      responses:
+        '200':
+          description: User partially updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'user-models.yaml#/components/schemas/User'
+        '404':
+          description: User not found
         '400':
           description: Invalid input
