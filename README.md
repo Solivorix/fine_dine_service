@@ -101,11 +101,6 @@ The project uses CI/CD pipelines for automated testing, deployment, and scaling.
 
 ---
 
-## License
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
-
----
-
 ## Contact
 For inquiries or collaboration, please contact:
 - **Akhil**  
