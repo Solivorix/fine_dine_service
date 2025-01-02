@@ -17,7 +17,7 @@ public class UserModel {
     private String contactNumber;
     private String role;
     private String createdBy;
-    private String modifiedBy;
+    private String updatedBy;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

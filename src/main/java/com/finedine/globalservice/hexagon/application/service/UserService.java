@@ -14,6 +14,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -32,6 +33,31 @@ public class UserService implements UserServicePort {
         userModel.setPassword(hashedPassword);
         userModel.setPasswordSalt(Base64.getEncoder().encodeToString(salt));
         return userDao.createUser(userModel);
+    }
+
+    @Override
+    public List<UserModel> getAllUsers() {
+        return userDao.getAllUsers();
+    }
+
+    @Override
+    public boolean deleteUser(String id) {
+        return userDao.deleteUser(id);
+    }
+
+    @Override
+    public UserModel getUserById(String id) {
+        return userDao.getUserById(id);
+    }
+
+    @Override
+    public UserModel updateUser(String id, UserModel model) {
+        return userDao.updateUser(id,model);
+    }
+
+    @Override
+    public UserModel patchUser(String id, UserModel model) {
+        return userDao.patchUser(id,model);
     }
 
     public boolean validatePassword(String username, String rawPassword) {

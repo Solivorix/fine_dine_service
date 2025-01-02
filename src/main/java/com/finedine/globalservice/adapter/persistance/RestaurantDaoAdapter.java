@@ -75,7 +75,9 @@ public class RestaurantDaoAdapter implements RestaurantDao {
         Optional.ofNullable(restaurantModel.getName()).ifPresent(existingRestaurant::setName);
         Optional.ofNullable(restaurantModel.getGstNo()).ifPresent(existingRestaurant::setGstNo);
         Optional.ofNullable(restaurantModel.getAddress()).ifPresent(existingRestaurant::setAddress);
-        Optional.ofNullable(restaurantModel.getCreatedAt()).ifPresent(existingRestaurant::setCreatedAt);
+        Optional.ofNullable(restaurantModel.getPrimaryEmailId()).ifPresent(existingRestaurant::setPrimaryEmailId);
+        Optional.ofNullable(restaurantModel.getPrimaryContactNumber()).ifPresent(existingRestaurant::setPrimaryContactNumber);
+        Optional.ofNullable(restaurantModel.getModifiedBy()).ifPresent(restaurantModel::setModifiedBy);
 
         existingRestaurant = restaurantRepository.save(existingRestaurant);
         return RestaurantEntityMapper.INSTANCE.toRestaurantModel(existingRestaurant);
