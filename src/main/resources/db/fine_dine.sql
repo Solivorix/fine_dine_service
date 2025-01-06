@@ -100,6 +100,20 @@ CREATE TABLE `users` (
     )
 );
 
+CREATE TABLE `orders` (
+    `order_id` string  NOT NULL ,
+    `restaurant_id` string  NOT NULL ,
+    `product_id` string  NOT NULL ,
+    `table_number` number  NOT NULL ,
+    `created_at` date  NOT NULL ,
+    `updated_at` date  NOT NULL ,
+    `created_by` string  NOT NULL ,
+    `updated_by` string  NOT NULL ,
+    PRIMARY KEY (
+        `order_id`
+    )
+);
+
 ALTER TABLE `prices` ADD CONSTRAINT `fk_prices_restaurant_id` FOREIGN KEY(`restaurant_id`)
 REFERENCES `restaurants` (`restaurant_id`);
 
@@ -122,5 +136,8 @@ ALTER TABLE `service_types` ADD CONSTRAINT `fk_service_types_restaurant_id` FORE
 REFERENCES `restaurants` (`restaurant_id`);
 
 ALTER TABLE `users` ADD CONSTRAINT `fk_users_restaurant_id` FOREIGN KEY(`restaurant_id`)
+REFERENCES `restaurants` (`restaurant_id`);
+
+ALTER TABLE `orders` ADD CONSTRAINT `fk_orders_restaurant_id` FOREIGN KEY(`restaurant_id`)
 REFERENCES `restaurants` (`restaurant_id`);
 
