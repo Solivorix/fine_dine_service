@@ -2,7 +2,6 @@ package com.finedine.globalservice.adapter.web;
 
 import com.finedine.api.ItemsApi;
 import com.finedine.globalservice.adapter.web.mapper.ItemDtoMapper;
-import com.finedine.globalservice.adapter.web.mapper.PatchItemRequestDtoMapper;
 import com.finedine.globalservice.hexagon.application.port.api.ItemServicePort;
 import com.finedine.model.ItemDto;
 import com.finedine.model.PatchItemRequestDto;
@@ -59,7 +58,7 @@ public class ItemsController implements ItemsApi {
     @Override
     public ResponseEntity<ItemDto> patchItem(String itemId, PatchItemRequestDto patchItemRequestDto) {
         return Optional.ofNullable(patchItemRequestDto)
-                .map(PatchItemRequestDtoMapper.INSTANCE::toItemModel)
+                .map(ItemDtoMapper.INSTANCE::toItemModel)
                 .map(model -> itemServicePort.patchItem(itemId, model))
                 .map(ItemDtoMapper.INSTANCE::toItemDto)
                 .map(ResponseEntity::ok)

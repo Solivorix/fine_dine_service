@@ -1,0 +1,49 @@
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Primary key
+        restaurantId:
+          type: string
+          description: Foreign key referencing the restaurant
+        productId:
+          type: string
+        tableNumber:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+    OrderInput:
+      type: object
+      properties:
+        restaurantId:
+          type: string
+        productId:
+          type: string
+        tableNumber:
+          type: integer
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+    OrderPartialInput:
+      type: object
+      properties:
+        restaurantId:
+          type: string
+        productId:
+          type: string
+        tableNumber:
+          type: integer
+        updatedBy:
+          type: string
