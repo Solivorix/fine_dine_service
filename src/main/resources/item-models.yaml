@@ -1,0 +1,42 @@
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        itemId:
+          type: string
+          description: Primary key for the item
+        productId:
+          type: string
+          description: Identifier for the product associated with the item
+        productName:
+          type: string
+          description: Name of the product
+        productDescription:
+          type: string
+          description: Detailed description of the product
+        restaurantId:
+          type: string
+          description: Foreign key linking the item to a restaurant
+        itemStatus:
+          type: string
+          description: Status of the item (e.g., "available", "unavailable")
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the item was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the item was last updated
+        createdBy:
+          type: string
+          description: Identifier of the user who created the item
+        updatedBy:
+          type: string
+          description: Identifier of the user who last updated the item
+      required:
+        - productId
+        - productName
+        - restaurantId
+        - itemStatus
