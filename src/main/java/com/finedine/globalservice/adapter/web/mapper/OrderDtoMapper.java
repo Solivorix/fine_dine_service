@@ -1,9 +1,10 @@
 package com.finedine.globalservice.adapter.web.mapper;
 
-import com.finedine.globalservice.hexagon.domain.model.ItemModel;
+import com.finedine.globalservice.hexagon.domain.model.OrderModel;
 import com.finedine.globalservice.util.mapper.CommonMappingConfiguration;
-import com.finedine.model.ItemDto;
-import com.finedine.model.PatchItemRequestDto;
+import com.finedine.model.OrderDto;
+import com.finedine.model.OrderInputDto;
+import com.finedine.model.OrderPartialInputDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -14,23 +15,32 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 @Mapper(config = CommonMappingConfiguration.class)
-public interface ItemDtoMapper {
+public interface OrderDtoMapper {
 
-    ItemDtoMapper INSTANCE = Mappers.getMapper(ItemDtoMapper.class);
+    OrderDtoMapper INSTANCE = Mappers.getMapper(OrderDtoMapper.class);
 
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "offsetToLocal")
     @Mapping(source = "updatedAt", target = "updatedAt", qualifiedByName = "offsetToLocal")
-    ItemModel toItemModel(ItemDto itemDto);
+    OrderModel toOrderModel(OrderDto orderDto);
 
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "localToOffset")
     @Mapping(source = "updatedAt", target = "updatedAt", qualifiedByName = "localToOffset")
-    ItemDto toItemDto(ItemModel itemModel);
+    OrderDto toOrderDto(OrderModel orderModel);
 
-    List<ItemModel> toItemModelList(List<ItemDto> itemDtoList);
+    List<OrderModel> toOrderModelList(List<OrderDto> orderDtoList);
 
-    List<ItemDto> toItemDtoList(List<ItemModel> itemModelList);
+    List<OrderDto> toOrderDtoList(List<OrderModel> orderModelList);
 
-    ItemModel toItemModel(PatchItemRequestDto patchItemRequestDto);
+    @Mapping(target = "orderId", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    OrderModel toOrderModel(OrderInputDto orderInputDto);
+
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "orderId", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "createdBy", ignore = true)
+    OrderModel toOrderModel(OrderPartialInputDto orderPartialInputDto);
 
     @Named("offsetToLocal")
     default LocalDateTime offsetToLocal(OffsetDateTime offsetDateTime) {
@@ -41,5 +51,4 @@ public interface ItemDtoMapper {
     default OffsetDateTime localToOffset(LocalDateTime localDateTime) {
         return localDateTime == null ? null : localDateTime.atOffset(OffsetDateTime.now().getOffset());
     }
-
 }
