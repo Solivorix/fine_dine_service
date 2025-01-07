@@ -39,12 +39,12 @@ paths:
                 $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
         '400':
           description: Invalid input
-  /restaurants/{id}:
+  /restaurants/{restaurantId}:
     get:
       summary: Get a restaurant by its unique id
       operationId: getRestaurantById
       parameters:
-        - name: id
+        - name: restaurantId
           in: path
           required: true
           schema:
@@ -63,7 +63,7 @@ paths:
       summary: Update a restaurant by its unique id
       operationId: updateRestaurant
       parameters:
-        - name: id
+        - name: restaurantId
           in: path
           required: true
           schema:
@@ -90,7 +90,7 @@ paths:
       summary: Partially update a restaurant by its unique id
       operationId: patchRestaurant
       parameters:
-        - name: id
+        - name: restaurantId
           in: path
           required: true
           schema:
@@ -117,7 +117,7 @@ paths:
       summary: Delete a restaurant by its unique id
       operationId: deleteRestaurant
       parameters:
-        - name: id
+        - name: restaurantId
           in: path
           required: true
           schema:
@@ -159,12 +159,12 @@ paths:
                 $ref: 'user-models.yaml#/components/schemas/User'
         '400':
           description: Invalid input
-  /users/{id}:
+  /users/{userId}:
     get:
       summary: Get a user by their unique ID
       operationId: getUserById
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
@@ -184,7 +184,7 @@ paths:
       summary: Update a user by their unique ID
       operationId: updateUser
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
@@ -212,7 +212,7 @@ paths:
       summary: Delete a user by their unique ID
       operationId: deleteUser
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
@@ -228,7 +228,7 @@ paths:
       summary: Partially update a user by their unique ID
       operationId: patchUser
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
@@ -251,3 +251,135 @@ paths:
           description: User not found
         '400':
           description: Invalid input
+  /items:
+    get:
+      summary: Retrieve all items
+      operationId: getItems
+      responses:
+        '200':
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'item-models.yaml#/components/schemas/Item'
+    post:
+      summary: Create multiple items
+      operationId: createItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: 'item-models.yaml#/components/schemas/Item'
+      responses:
+        '201':
+          description: Items created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'item-models.yaml#/components/schemas/Item'
+  /items/{itemId}:
+    get:
+      summary: Retrieve an item by ID
+      operationId: getItemById
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the item to retrieve
+      responses:
+        '200':
+          description: The requested item
+          content:
+            application/json:
+              schema:
+                $ref: 'item-models.yaml#/components/schemas/Item'
+        '404':
+          description: Item not found
+
+    put:
+      summary: Update an item by ID
+      operationId: updateItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the item to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'item-models.yaml#/components/schemas/Item'
+      responses:
+        '200':
+          description: Item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'item-models.yaml#/components/schemas/Item'
+        '404':
+          description: Item not found
+
+    patch:
+      summary: Partially update an item by ID
+      operationId: patchItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the item to patch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Fields to update
+              properties:
+                productName:
+                  type: string
+                productDescription:
+                  type: string
+                itemStatus:
+                  type: string
+              example:
+                productName: "Updated Name"
+                itemStatus: "unavailable"
+      responses:
+        '200':
+          description: Item patched successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'item-models.yaml#/components/schemas/Item'
+        '404':
+          description: Item not found
+
+    delete:
+      summary: Delete an item by ID
+      operationId: deleteItem
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the item to delete
+      responses:
+        '204':
+          description: Item deleted successfully
+        '404':
+          description: Item not found
