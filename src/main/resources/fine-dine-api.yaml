@@ -355,6 +355,8 @@ paths:
                   type: string
                 itemStatus:
                   type: string
+                updatedBy:
+                  type: string
               example:
                 productName: "Updated Name"
                 itemStatus: "unavailable"
