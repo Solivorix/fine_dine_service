@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,26 +34,45 @@ public class OrdersController implements OrdersApi {
 
     @Override
     public ResponseEntity<Void> deleteOrder(String orderId) {
-        return null;
+        return orderServicePort.deleteOrder(orderId)
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
     }
 
     @Override
     public ResponseEntity<List<OrderDto>> getAllOrders() {
-        return null;
+        return ResponseEntity.ok(
+                Optional.ofNullable(orderServicePort.getAllOrders())
+                        .map(OrderDtoMapper.INSTANCE::toOrderDtoList)
+                        .orElse(Collections.emptyList())
+        );
     }
 
     @Override
     public ResponseEntity<OrderDto> getOrderById(String orderId) {
-        return null;
+        return Optional.ofNullable(orderServicePort.getOrderById(orderId))
+                .map(OrderDtoMapper.INSTANCE::toOrderDto)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @Override
     public ResponseEntity<OrderDto> patchOrder(String orderId, OrderPartialInputDto orderPartialInputDto) {
-        return null;
+        return Optional.ofNullable(orderPartialInputDto)
+                .map(OrderDtoMapper.INSTANCE::toOrderModel)
+                .map(model -> orderServicePort.patchOrder(orderId, model))
+                .map(OrderDtoMapper.INSTANCE::toOrderDto)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new IllegalArgumentException("OrderPartialInputDto cannot be null"));
     }
 
     @Override
     public ResponseEntity<OrderDto> updateOrder(String orderId, OrderInputDto orderInputDto) {
-        return null;
+        return Optional.ofNullable(orderInputDto)
+                .map(OrderDtoMapper.INSTANCE::toOrderModel)
+                .map(model -> orderServicePort.updateOrder(orderId, model))
+                .map(OrderDtoMapper.INSTANCE::toOrderDto)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new IllegalArgumentException("OrderInputDto cannot be null"));
     }
 }
