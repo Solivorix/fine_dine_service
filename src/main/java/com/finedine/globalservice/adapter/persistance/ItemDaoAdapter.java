@@ -6,6 +6,7 @@ import com.finedine.globalservice.adapter.persistance.repository.ItemRepository;
 import com.finedine.globalservice.hexagon.application.port.spi.ItemDao;
 import com.finedine.globalservice.hexagon.domain.model.ItemModel;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,7 @@ public class ItemDaoAdapter implements ItemDao {
                 .orElse(null);
     }
 
+    @Transactional
     @Override
     public ItemModel patchItem(String itemId, ItemModel itemModel) {
         ItemEntity existingItem = itemRepository.findById(itemId)
