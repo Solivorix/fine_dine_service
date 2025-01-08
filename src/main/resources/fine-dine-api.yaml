@@ -499,3 +499,120 @@ paths:
           description: Order deleted successfully
         '404':
           description: Order not found
+  /prices:
+    get:
+      operationId: getAllPrices
+      summary: Get all prices
+      description: Retrieve a list of all prices.
+      responses:
+        '200':
+          description: List of prices retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'price-models.yaml#/components/schemas/Price'
+    post:
+      operationId: createPrice
+      summary: Create a new price
+      description: Create a new price record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'price-models.yaml#/components/schemas/Price'
+      responses:
+        '201':
+          description: Price created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'price-models.yaml#/components/schemas/Price'
+  /prices/{priceId}:
+    get:
+      operationId: getPriceById
+      summary: Get price by ID
+      description: Retrieve a price by its ID.
+      parameters:
+        - name: priceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Price retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'price-models.yaml#/components/schemas/Price'
+        '404':
+          description: Price not found.
+    delete:
+      operationId: deletePriceById
+      summary: Delete price by ID
+      description: Delete a price record by its ID.
+      parameters:
+        - name: priceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Price deleted successfully.
+        '404':
+          description: Price not found.
+    put:
+      operationId: updatePriceById
+      summary: Update price by ID
+      description: Update all details of a price by its ID.
+      parameters:
+        - name: priceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'price-models.yaml#/components/schemas/Price'
+      responses:
+        '200':
+          description: Price updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'price-models.yaml#/components/schemas/Price'
+        '404':
+          description: Price not found.
+    patch:
+      operationId: partiallyUpdatePriceById
+      summary: Partially update price by ID
+      description: Partially update details of a price by its ID.
+      parameters:
+        - name: priceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'price-models.yaml#/components/schemas/PricePartial'
+      responses:
+        '200':
+          description: Price partially updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'price-models.yaml#/components/schemas/Price'
+        '404':
+          description: Price not found.
+
