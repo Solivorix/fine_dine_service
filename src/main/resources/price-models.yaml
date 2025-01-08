@@ -1,0 +1,59 @@
+components:
+  schemas:
+    Price:
+      type: object
+      properties:
+        price_id:
+          type: string
+          description: Primary key of the price.
+        restaurant_id:
+          type: string
+          description: Foreign key referencing a restaurant.
+        portion_size:
+          type: string
+          description: Size of the portion for this price.
+        item_id:
+          type: string
+          description: Foreign key referencing an item.
+        price:
+          type: number
+          format: decimal
+          description: Price value.
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation date.
+        updated_at:
+          type: string
+          format: date-time
+          description: Record update date.
+        created_by:
+          type: string
+          description: Creator of the record.
+        updated_by:
+          type: string
+          description: Updater of the record.
+
+    PricePartial:
+      type: object
+      properties:
+        restaurant_id:
+          type: string
+          description: Foreign key referencing a restaurant.
+        portion_size:
+          type: string
+          description: Size of the portion for this price.
+        item_id:
+          type: string
+          description: Foreign key referencing an item.
+        price:
+          type: number
+          format: decimal
+          description: Price value.
+        updated_at:
+          type: string
+          format: date-time
+          description: Record update date.
+        updated_by:
+          type: string
+          description: Updater of the record.
