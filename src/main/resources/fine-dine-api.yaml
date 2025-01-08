@@ -615,4 +615,120 @@ paths:
                 $ref: 'price-models.yaml#/components/schemas/Price'
         '404':
           description: Price not found.
+  /service-types:
+    get:
+      operationId: getAllServiceTypes
+      summary: Get all service types
+      description: Retrieve a list of all service types.
+      responses:
+        '200':
+          description: List of service types retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+    post:
+      operationId: createServiceType
+      summary: Create a new service type
+      description: Create a new service type record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+      responses:
+        '201':
+          description: Service type created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+  /service-types/{serviceTypeId}:
+    get:
+      operationId: getServiceTypeById
+      summary: Get service type by ID
+      description: Retrieve a service type by its ID.
+      parameters:
+        - name: serviceTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Service type retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+        '404':
+          description: Service type not found.
+    delete:
+      operationId: deleteServiceTypeById
+      summary: Delete service type by ID
+      description: Delete a service type record by its ID.
+      parameters:
+        - name: serviceTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Service type deleted successfully.
+        '404':
+          description: Service type not found.
+    put:
+      operationId: updateServiceTypeById
+      summary: Update service type by ID
+      description: Update all details of a service type by its ID.
+      parameters:
+        - name: serviceTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+      responses:
+        '200':
+          description: Service type updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+        '404':
+          description: Service type not found.
+    patch:
+      operationId: partiallyUpdateServiceTypeById
+      summary: Partially update service type by ID
+      description: Partially update details of a service type by its ID.
+      parameters:
+        - name: serviceTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'serviceType-models.yaml#/components/schemas/ServiceTypePartial'
+      responses:
+        '200':
+          description: Service type partially updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+        '404':
+          description: Service type not found.
 
