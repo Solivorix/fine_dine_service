@@ -1,0 +1,45 @@
+components:
+  schemas:
+    ServiceType:
+      type: object
+      properties:
+        service_type_id:
+          type: string
+          description: Primary key of the service type.
+        type_name:
+          type: string
+          description: Name of the service type.
+        restaurant_id:
+          type: string
+          description: Foreign key referencing a restaurant.
+        created_at:
+          type: string
+          format: date-time
+          description: Record creation date.
+        updated_at:
+          type: string
+          format: date-time
+          description: Record update date.
+        created_by:
+          type: string
+          description: Creator of the record.
+        updated_by:
+          type: string
+          description: Updater of the record.
+
+    ServiceTypePartial:
+      type: object
+      properties:
+        type_name:
+          type: string
+          description: Name of the service type.
+        restaurant_id:
+          type: string
+          description: Foreign key referencing a restaurant.
+        updated_at:
+          type: string
+          format: date-time
+          description: Record update date.
+        updated_by:
+          type: string
+          description: Updater of the record.
