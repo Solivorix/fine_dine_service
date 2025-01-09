@@ -7,11 +7,8 @@ import com.finedine.model.OrderInputDto;
 import com.finedine.model.OrderPartialInputDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.List;
 
 @Mapper(config = CommonMappingConfiguration.class)
@@ -42,13 +39,4 @@ public interface OrderDtoMapper {
     @Mapping(target = "createdBy", ignore = true)
     OrderModel toOrderModel(OrderPartialInputDto orderPartialInputDto);
 
-    @Named("offsetToLocal")
-    default LocalDateTime offsetToLocal(OffsetDateTime offsetDateTime) {
-        return offsetDateTime == null ? null : offsetDateTime.toLocalDateTime();
-    }
-
-    @Named("localToOffset")
-    default OffsetDateTime localToOffset(LocalDateTime localDateTime) {
-        return localDateTime == null ? null : localDateTime.atOffset(OffsetDateTime.now().getOffset());
-    }
 }

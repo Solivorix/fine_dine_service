@@ -36,10 +36,6 @@ components:
         restaurant_id:
           type: string
           description: Foreign key referencing a restaurant.
-        updated_at:
-          type: string
-          format: date-time
-          description: Record update date.
         updated_by:
           type: string
           description: Updater of the record.
