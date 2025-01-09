@@ -5,7 +5,8 @@ import org.mapstruct.*;
 @MapperConfig(
         injectionStrategy = InjectionStrategy.CONSTRUCTOR, componentModel = MappingConstants.ComponentModel.SPRING,
         nullValueIterableMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT,
-        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        uses = DateTimeConversionUtil.class)
 public interface CommonMappingConfiguration {
 
 }
