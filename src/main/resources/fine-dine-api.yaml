@@ -20,7 +20,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+                  $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
     post:
       summary: Create a new restaurant
       operationId: createRestaurant
@@ -29,14 +29,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+              $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
       responses:
         '201':
           description: Restaurant created successfully
           content:
             application/json:
               schema:
-                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+                $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
         '400':
           description: Invalid input
   /restaurants/{restaurantId}:
@@ -56,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+                $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
         '404':
           description: Restaurant not found
     put:
@@ -74,14 +74,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+              $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
       responses:
         '200':
           description: Restaurant updated successfully
           content:
             application/json:
               schema:
-                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+                $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
         '404':
           description: Restaurant not found
         '400':
@@ -101,14 +101,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+              $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
       responses:
         '200':
           description: Restaurant partially updated successfully
           content:
             application/json:
               schema:
-                $ref: 'restaurant-models.yaml#/components/schemas/Restaurant'
+                $ref: 'api-model/restaurant-models.yaml#/components/schemas/Restaurant'
         '404':
           description: Restaurant not found
         '400':
@@ -140,7 +140,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'user-models.yaml#/components/schemas/User'
+                  $ref: 'api-model/user-models.yaml#/components/schemas/User'
     post:
       summary: Create a new user
       operationId: createUser
@@ -149,14 +149,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'user-models.yaml#/components/schemas/User'
+              $ref: 'api-model/user-models.yaml#/components/schemas/User'
       responses:
         '201':
           description: User created successfully
           content:
             application/json:
               schema:
-                $ref: 'user-models.yaml#/components/schemas/User'
+                $ref: 'api-model/user-models.yaml#/components/schemas/User'
         '400':
           description: Invalid input
   /users/{userId}:
@@ -176,7 +176,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'user-models.yaml#/components/schemas/User'
+                $ref: 'api-model/user-models.yaml#/components/schemas/User'
         '404':
           description: User not found
 
@@ -195,14 +195,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'user-models.yaml#/components/schemas/User'
+              $ref: 'api-model/user-models.yaml#/components/schemas/User'
       responses:
         '200':
           description: User updated successfully
           content:
             application/json:
               schema:
-                $ref: 'user-models.yaml#/components/schemas/User'
+                $ref: 'api-model/user-models.yaml#/components/schemas/User'
         '404':
           description: User not found
         '400':
@@ -239,14 +239,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'user-models.yaml#/components/schemas/User'
+              $ref: 'api-model/user-models.yaml#/components/schemas/User'
       responses:
         '200':
           description: User partially updated successfully
           content:
             application/json:
               schema:
-                $ref: 'user-models.yaml#/components/schemas/User'
+                $ref: 'api-model/user-models.yaml#/components/schemas/User'
         '404':
           description: User not found
         '400':
@@ -263,7 +263,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'item-models.yaml#/components/schemas/Item'
+                  $ref: 'api-model/item-models.yaml#/components/schemas/Item'
     post:
       summary: Create multiple items
       operationId: createItems
@@ -274,7 +274,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: 'item-models.yaml#/components/schemas/Item'
+                $ref: 'api-model/item-models.yaml#/components/schemas/Item'
       responses:
         '201':
           description: Items created successfully
@@ -283,7 +283,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'item-models.yaml#/components/schemas/Item'
+                  $ref: 'api-model/item-models.yaml#/components/schemas/Item'
   /items/{itemId}:
     get:
       summary: Retrieve an item by ID
@@ -301,7 +301,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'item-models.yaml#/components/schemas/Item'
+                $ref: 'api-model/item-models.yaml#/components/schemas/Item'
         '404':
           description: Item not found
 
@@ -320,14 +320,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'item-models.yaml#/components/schemas/Item'
+              $ref: 'api-model/item-models.yaml#/components/schemas/Item'
       responses:
         '200':
           description: Item updated successfully
           content:
             application/json:
               schema:
-                $ref: 'item-models.yaml#/components/schemas/Item'
+                $ref: 'api-model/item-models.yaml#/components/schemas/Item'
         '404':
           description: Item not found
 
@@ -366,7 +366,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'item-models.yaml#/components/schemas/Item'
+                $ref: 'api-model/item-models.yaml#/components/schemas/Item'
         '404':
           description: Item not found
 
@@ -397,7 +397,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'order-models.yaml#/components/schemas/Order'
+                  $ref: 'api-model/order-models.yaml#/components/schemas/Order'
     post:
       summary: Create a new order
       operationId: createOrder
@@ -406,14 +406,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'order-models.yaml#/components/schemas/OrderInput'
+              $ref: 'api-model/order-models.yaml#/components/schemas/OrderInput'
       responses:
         '201':
           description: Order created
           content:
             application/json:
               schema:
-                $ref: 'order-models.yaml#/components/schemas/Order'
+                $ref: 'api-model/order-models.yaml#/components/schemas/Order'
   /orders/{orderId}:
     get:
       summary: Get an order by ID
@@ -431,7 +431,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'order-models.yaml#/components/schemas/Order'
+                $ref: 'api-model/order-models.yaml#/components/schemas/Order'
         '404':
           description: Order not found
     put:
@@ -449,14 +449,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'order-models.yaml#/components/schemas/OrderInput'
+              $ref: 'api-model/order-models.yaml#/components/schemas/OrderInput'
       responses:
         '200':
           description: Order updated
           content:
             application/json:
               schema:
-                $ref: 'order-models.yaml#/components/schemas/Order'
+                $ref: 'api-model/order-models.yaml#/components/schemas/Order'
         '404':
           description: Order not found
     patch:
@@ -474,14 +474,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'order-models.yaml#/components/schemas/OrderPartialInput'
+              $ref: 'api-model/order-models.yaml#/components/schemas/OrderPartialInput'
       responses:
         '200':
           description: Order updated
           content:
             application/json:
               schema:
-                $ref: 'order-models.yaml#/components/schemas/Order'
+                $ref: 'api-model/order-models.yaml#/components/schemas/Order'
         '404':
           description: Order not found
     delete:
@@ -512,7 +512,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'price-models.yaml#/components/schemas/Price'
+                  $ref: 'api-model/price-models.yaml#/components/schemas/Price'
     post:
       operationId: createPrice
       summary: Create a new price
@@ -522,14 +522,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'price-models.yaml#/components/schemas/Price'
+              $ref: 'api-model/price-models.yaml#/components/schemas/Price'
       responses:
         '201':
           description: Price created successfully.
           content:
             application/json:
               schema:
-                $ref: 'price-models.yaml#/components/schemas/Price'
+                $ref: 'api-model/price-models.yaml#/components/schemas/Price'
   /prices/{priceId}:
     get:
       operationId: getPriceById
@@ -547,7 +547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'price-models.yaml#/components/schemas/Price'
+                $ref: 'api-model/price-models.yaml#/components/schemas/Price'
         '404':
           description: Price not found.
     delete:
@@ -580,14 +580,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'price-models.yaml#/components/schemas/Price'
+              $ref: 'api-model/price-models.yaml#/components/schemas/Price'
       responses:
         '200':
           description: Price updated successfully.
           content:
             application/json:
               schema:
-                $ref: 'price-models.yaml#/components/schemas/Price'
+                $ref: 'api-model/price-models.yaml#/components/schemas/Price'
         '404':
           description: Price not found.
     patch:
@@ -605,14 +605,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'price-models.yaml#/components/schemas/PricePartial'
+              $ref: 'api-model/price-models.yaml#/components/schemas/PricePartial'
       responses:
         '200':
           description: Price partially updated successfully.
           content:
             application/json:
               schema:
-                $ref: 'price-models.yaml#/components/schemas/Price'
+                $ref: 'api-model/price-models.yaml#/components/schemas/Price'
         '404':
           description: Price not found.
   /service-types:
@@ -628,7 +628,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+                  $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
     post:
       operationId: createServiceType
       summary: Create a new service type
@@ -638,14 +638,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+              $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
       responses:
         '201':
           description: Service type created successfully.
           content:
             application/json:
               schema:
-                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+                $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
   /service-types/{serviceTypeId}:
     get:
       operationId: getServiceTypeById
@@ -663,7 +663,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+                $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
         '404':
           description: Service type not found.
     delete:
@@ -696,14 +696,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+              $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
       responses:
         '200':
           description: Service type updated successfully.
           content:
             application/json:
               schema:
-                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+                $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
         '404':
           description: Service type not found.
     patch:
@@ -721,14 +721,128 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'serviceType-models.yaml#/components/schemas/ServiceTypePartial'
+              $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceTypePartial'
       responses:
         '200':
           description: Service type partially updated successfully.
           content:
             application/json:
               schema:
-                $ref: 'serviceType-models.yaml#/components/schemas/ServiceType'
+                $ref: 'api-model/serviceType-models.yaml#/components/schemas/ServiceType'
         '404':
           description: Service type not found.
+  /additional-pricings:
+    get:
+      summary: Get all additional pricing records
+      operationId: getAllAdditionalPricings
+      responses:
+        '200':
+          description: Successful response with a list of additional pricing records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricing'
+    post:
+      summary: Create a new additional pricing record
+      operationId: createAdditionalPricing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricingInput'
+      responses:
+        '201':
+          description: Additional pricing record created successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricing'
+  /additional-pricings/{id}:
+    get:
+      summary: Get an additional pricing record by ID
+      operationId: getAdditionalPricingById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the additional pricing record
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with the additional pricing record
+          content:
+            application/json:
+              schema:
+                $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricing'
+        '404':
+          description: Additional pricing record not found
+    put:
+      summary: Update an additional pricing record by ID
+      operationId: updateAdditionalPricing
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the additional pricing record
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricingInput'
+      responses:
+        '200':
+          description: Additional pricing record updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricing'
+        '404':
+          description: Additional pricing record not found
+    patch:
+      summary: Partially update an additional pricing record by ID
+      operationId: partiallyUpdateAdditionalPricing
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the additional pricing record
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricingInput'
+      responses:
+        '200':
+          description: Additional pricing record updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: 'api-model/additionalPricing-models.yaml#/components/schemas/AdditionalPricing'
+        '404':
+          description: Additional pricing record not found
+    delete:
+      summary: Delete an additional pricing record by ID
+      operationId: deleteAdditionalPricing
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the additional pricing record
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Additional pricing record deleted successfully
+        '404':
+          description: Additional pricing record not found
 
