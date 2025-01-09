@@ -1,0 +1,65 @@
+components:
+  schemas:
+    AdditionalPricing:
+      type: object
+      properties:
+        additionalPricingId:
+          type: string
+          description: Primary key
+        serviceTypeId:
+          type: string
+          description: Foreign key to service type
+        priceName:
+          type: string
+        itemId:
+          type: string
+          description: Foreign key to item
+        charge:
+          type: number
+          format: decimal
+        chargeType:
+          type: string
+        restaurantId:
+          type: string
+          description: Foreign key to restaurant
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+    AdditionalPricingInput:
+      type: object
+      properties:
+        serviceTypeId:
+          type: string
+          description: Foreign key to service type
+        priceName:
+          type: string
+        itemId:
+          type: string
+          description: Foreign key to item
+        charge:
+          type: number
+          format: decimal
+        chargeType:
+          type: string
+        restaurantId:
+          type: string
+          description: Foreign key to restaurant
+        createdBy:
+          type: string
+        updatedBy:
+          type: string
+      required:
+        - serviceTypeId
+        - priceName
+        - itemId
+        - charge
+        - chargeType
+        - restaurantId
+        - createdBy
