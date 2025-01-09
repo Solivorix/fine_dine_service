@@ -24,10 +24,10 @@ components:
           description: Foreign key to restaurant
         createdAt:
           type: string
-          format: date
+          format: date-time
         updatedAt:
           type: string
-          format: date
+          format: date-time
         createdBy:
           type: string
         updatedBy:
