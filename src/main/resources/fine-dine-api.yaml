@@ -845,4 +845,48 @@ paths:
           description: Additional pricing record deleted successfully
         '404':
           description: Additional pricing record not found
-
+  /auth/login:
+    post:
+      summary: User login
+      operationId: loginUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/auth-models.yaml#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: 'api-model/auth-models.yaml#/components/schemas/LoginResponse'
+        '401':
+          description: Unauthorized
+  /auth/forgot-password:
+    post:
+      summary: Forgot password
+      operationId: forgotPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/auth-models.yaml#/components/schemas/ForgotPasswordRequest'
+      responses:
+        '200':
+          description: OTP sent successfully
+  /auth/reset-password:
+    post:
+      summary: Reset password
+      operationId: resetPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'api-model/auth-models.yaml#/components/schemas/ResetPasswordRequest'
+      responses:
+        '200':
+          description: Password reset successfully

@@ -2,6 +2,7 @@ package com.finedine.globalservice.adapter.web.mapper;
 
 import com.finedine.globalservice.hexagon.domain.model.UserModel;
 import com.finedine.globalservice.util.mapper.CommonMappingConfiguration;
+import com.finedine.model.LoginRequestDto;
 import com.finedine.model.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,6 +24,21 @@ public interface UserDtoMapper {
     @Mapping(target = "password", ignore = true)
     UserDto toUserDto(UserModel userModel);
 
+
+    @Mapping(target = "userName", source = "loginId")
+    @Mapping(target = "userId", ignore = true)
+    @Mapping(target = "updatedBy", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "role", ignore = true)
+    @Mapping(target = "restaurantId", ignore = true)
+    @Mapping(target = "passwordSalt", ignore = true)
+    @Mapping(target = "email", ignore = true)
+    @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "contactNumber", ignore = true)
+    UserModel toUserModel(LoginRequestDto loginRequestDto);
+
     List<UserModel> toUserModelList(List<UserDto> userDtoList);
+
     List<UserDto> toUserDtoList(List<UserModel> userModelList);
 }

@@ -5,6 +5,7 @@ import com.finedine.globalservice.hexagon.domain.model.UserModel;
 import java.util.List;
 
 public interface UserServicePort {
+
     UserModel createUser(UserModel userModel);
 
     List<UserModel> getAllUsers();
@@ -16,4 +17,6 @@ public interface UserServicePort {
     UserModel updateUser(String id, UserModel model);
 
     UserModel patchUser(String id, UserModel model);
+
+    boolean loginUser(UserModel userModel);
 }

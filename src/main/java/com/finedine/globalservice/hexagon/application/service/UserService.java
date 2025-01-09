@@ -15,7 +15,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -60,7 +59,12 @@ public class UserService implements UserServicePort {
         return userDao.patchUser(id,model);
     }
 
-    public boolean validatePassword(String username, String rawPassword) {
+    @Override
+    public boolean loginUser(UserModel userModel) {
+        return validatePassword(userModel.getUserName(),userModel.getPassword());
+    }
+
+    private boolean validatePassword(String username, String rawPassword) {
         UserModel userModel = userDao.findByUserName(username);
         if(userModel != null) {
             byte[] salt = Base64.getDecoder().decode(userModel.getPasswordSalt());
