@@ -1,0 +1,29 @@
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      properties:
+        loginId:
+          type: string
+          description: User ID, email, or phone number
+        password:
+          type: string
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: JWT Token
+    ForgotPasswordRequest:
+      type: object
+      properties:
+        loginId:
+          type: string
+          description: User ID, email, or phone number
+    ResetPasswordRequest:
+      type: object
+      properties:
+        otp:
+          type: string
+        newPassword:
+          type: string
