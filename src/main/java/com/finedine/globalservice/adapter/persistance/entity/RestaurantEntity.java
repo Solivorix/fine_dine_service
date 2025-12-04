@@ -3,12 +3,10 @@ package com.finedine.globalservice.adapter.persistance.entity;
 import com.finedine.globalservice.adapter.util.UniqueHashGenerator;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
-import java.util.Base64;
 
 @Entity
 @Data
@@ -33,9 +31,14 @@ public class RestaurantEntity {
     @Column(name = "primary_contact_number")
     private String primaryContactNumber;
 
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
+
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime modifiedAt;
 
