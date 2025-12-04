@@ -24,6 +24,10 @@ components:
           description: Contact phone number in international format
           pattern: "^\\+?[0-9\\-\\s]{7,15}$"
           example: "+1-123-456-7890"
+        imageUrl:
+          type: string
+          description: Image of the restaurant
+          nullable: true
         createdAt:
           type: string
           format: date-time

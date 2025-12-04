@@ -15,6 +15,7 @@ public class RestaurantModel {
     private String primaryEmailId;
     private String primaryContactNumber;
     private String address;
+    private String imageUrl;
     private String createdBy;
     private String modifiedBy;
     private LocalDateTime createdAt;
