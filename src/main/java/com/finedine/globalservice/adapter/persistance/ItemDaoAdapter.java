@@ -54,6 +54,7 @@ public class ItemDaoAdapter implements ItemDao {
         Optional.ofNullable(itemModel.getProductDescription()).ifPresent(existingItem::setProductDescription);
         Optional.ofNullable(itemModel.getItemStatus()).ifPresent(existingItem::setItemStatus);
         Optional.ofNullable(itemModel.getUpdatedBy()).ifPresent(existingItem::setUpdatedBy);
+        Optional.ofNullable(itemModel.getImageUrl()).ifPresent(existingItem::setImageUrl);
 
         existingItem = itemRepository.save(existingItem);
         return ItemEntityMapper.INSTANCE.toItemModel(existingItem);

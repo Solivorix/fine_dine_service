@@ -3,6 +3,8 @@ package com.finedine.globalservice.adapter.persistance.entity;
 import com.finedine.globalservice.adapter.util.UniqueHashGenerator;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -30,9 +32,14 @@ public class ItemEntity {
     @Column(name = "item_status")
     private String itemStatus;
 
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
+
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
@@ -57,6 +64,7 @@ public class ItemEntity {
             this.itemId = generateHash(this.productId); // Ensure hash is updated if productId changes
         }
     }
+
     private String generateHash(String productId) {
         String dataToHash = productId + restaurantId + createdAt;
         return UniqueHashGenerator.generateHash(dataToHash);
