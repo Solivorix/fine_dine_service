@@ -1,6 +1,6 @@
 package com.finedine.globalservice.adapter.web;
 
-import com.finedine.globalservice.hexagon.application.service.FileStorageService;
+import com.finedine.globalservice.hexagon.application.port.api.FileStorageServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class FileUploadController {
 
-    private final FileStorageService fileStorageService;
+    private final FileStorageServicePort fileStorageServicePort;
 
     /**
      * Upload restaurant image
@@ -25,7 +25,7 @@ public class FileUploadController {
             @RequestParam("file") MultipartFile file) {
 
         try {
-            String fileUrl = fileStorageService.storeFile(file, "restaurants");
+            String fileUrl = fileStorageServicePort.storeFile(file, "restaurants");
 
             Map<String, String> response = new HashMap<>();
             response.put("success", "true");
@@ -49,7 +49,7 @@ public class FileUploadController {
             @RequestParam("file") MultipartFile file) {
 
         try {
-            String fileUrl = fileStorageService.storeFile(file, "items");
+            String fileUrl = fileStorageServicePort.storeFile(file, "items");
 
             Map<String, String> response = new HashMap<>();
             response.put("success", "true");
@@ -73,7 +73,7 @@ public class FileUploadController {
             @RequestParam("url") String fileUrl) {
 
         try {
-            fileStorageService.deleteFile(fileUrl);
+            fileStorageServicePort.deleteFile(fileUrl);
 
             Map<String, String> response = new HashMap<>();
             response.put("success", "true");

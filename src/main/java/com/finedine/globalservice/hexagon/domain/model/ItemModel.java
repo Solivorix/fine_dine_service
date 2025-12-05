@@ -21,6 +21,8 @@ public class ItemModel {
 
     private String itemStatus;
 
+    private String imageUrl;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;

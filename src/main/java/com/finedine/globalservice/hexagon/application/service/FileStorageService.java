@@ -1,5 +1,6 @@
 package com.finedine.globalservice.hexagon.application.service;
 
+import com.finedine.globalservice.hexagon.application.port.api.FileStorageServicePort;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +13,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 @Service
-public class FileStorageService {
+public class FileStorageService implements FileStorageServicePort {
 
     private final Path uploadLocation;
 
@@ -28,6 +29,7 @@ public class FileStorageService {
     /**
      * Store file and return the URL path
      */
+    @Override
     public String storeFile(MultipartFile file, String folder) {
         // Validate file
         if (file.isEmpty()) {
@@ -67,6 +69,7 @@ public class FileStorageService {
     /**
      * Delete file from storage
      */
+    @Override
     public void deleteFile(String fileUrl) {
         try {
             // Extract path from URL (e.g., "/uploads/restaurants/file.jpg" -> "restaurants/file.jpg")

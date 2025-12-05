@@ -21,6 +21,11 @@ components:
         itemStatus:
           type: string
           description: Status of the item (e.g., "available", "unavailable")
+        imageUrl:
+          type: string
+          description: URL path to the item image
+          nullable: true
+          example: "/uploads/items/550e8400-e29b-41d4-a716-446655440000.jpg"
         createdAt:
           type: string
           format: date-time
