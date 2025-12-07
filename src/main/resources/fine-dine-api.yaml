@@ -357,6 +357,12 @@ paths:
                   type: string
                 updatedBy:
                   type: string
+                imageUrl:
+                  type: string
+                itemCategory:
+                  type: string
+                foodType:
+                  type: string
               example:
                 productName: "Updated Name"
                 itemStatus: "unavailable"

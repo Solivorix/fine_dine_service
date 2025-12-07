@@ -23,6 +23,10 @@ public class ItemModel {
 
     private String imageUrl;
 
+    private String itemCategory;
+
+    private String foodType;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
