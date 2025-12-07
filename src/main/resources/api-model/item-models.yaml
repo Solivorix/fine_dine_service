@@ -26,6 +26,12 @@ components:
           description: URL path to the item image
           nullable: true
           example: "/uploads/items/550e8400-e29b-41d4-a716-446655440000.jpg"
+        itemCategory:
+          type: string
+          description: starter, main, dessert, beverage, pizza, burger, etc.
+        foodType:
+          type: string
+          description: veg, non-veg, egg
         createdAt:
           type: string
           format: date-time

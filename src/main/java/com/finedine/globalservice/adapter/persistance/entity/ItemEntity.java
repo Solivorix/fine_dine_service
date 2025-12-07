@@ -35,6 +35,12 @@ public class ItemEntity {
     @Column(name = "image_url", length = 500)
     private String imageUrl;
 
+    @Column(name = "item_category", length = 50)
+    private String itemCategory;
+
+    @Column(name = "food_type", length = 20)
+    private String foodType;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
